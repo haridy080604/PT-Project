@@ -28,7 +28,7 @@ Output::Output()
 	UI.PlayerInfoColor = DARKSLATEBLUE;
 
 	// Background Colors of toolbar and statusbar 
-	UI.ToolBarColor = WHITE;
+	UI.ToolBarColor = BLUE;
 	UI.StatusBarColor = LIGHTGRAY; 
 
 	// Line Colors of the borders of each cell
@@ -101,7 +101,7 @@ int Output::GetCellStartX(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 
-	return 0; // this line should be changed with your implementation
+	return cellPos.HCell()*UI.CellWidth; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +110,7 @@ int Output::GetCellStartY(const CellPosition & cellPos) const
 {
 	///TODO: implement the following function as described in Output.h file
 
-	return 0; // this line should be changed with your implementation
+	return cellPos.VCell()*UI.CellHeight + UI.ToolBarHeight; // this line should be changed with your implementation
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -202,7 +202,10 @@ void Output::CreateDesignModeToolBar() const
 	string MenuItemImages[DESIGN_ITM_COUNT];
 	MenuItemImages[ITM_ADD_LADDER] = "images\\Menu_Ladder.jpg";	
 	MenuItemImages[ITM_ADD_SNAKE] = "images\\Menu_Snake.jpg";	
-	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";	
+	MenuItemImages[ITM_ADD_CARD] = "images\\Menu_Card.jpg";
+	MenuItemImages[ITM_COPY_CARD] = "images\\Menu_copy_card.jpg";
+	MenuItemImages[ITM_CUT_CARD] = "images\\Menu_cut.jpg";
+	MenuItemImages[ITM_PASTE_CARD] = "images\\Menu_paste.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
 
@@ -305,20 +308,18 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 		pWind->SetBrush(UI.CellColor_HasCard);
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
-	
-
-
+	for (int i = 0;i < 9;i++) {
+		for (int j = 0;j < 11;j++) {
+			pWind->DrawRectangle(j * UI.CellWidth, UI.ToolBarHeight + i * UI.CellHeight, (j + 1) * UI.CellWidth - 1, (i + 1) * UI.CellHeight + UI.ToolBarHeight - 1);
+		}
+	}
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);
 	pWind->SetFont(UI.CellNumFont, BOLD , BY_NAME, "Verdana");   
 
 	int w=0, h=0;
-
 	///TODO: Get the Width and Height of the Cell Number if written using the current font 
-	//       (Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
-
-
-
+	//(Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
 	// Calculate X & Y coordinate of the start point of writing the card number (upper left point of the cell num)
 	int x = cellStartX + (UI.CellWidth - w - 1);   // space 1 from the end of the cell width
 												   // ( - w ) because x is for the start point of cell num (num's left corner)
@@ -326,8 +327,6 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 												   // ( - w ) because y is for the start point of cell num (num's upper corner)
 	
 	///TODO: Draw the cell number in the x and y location
-
-	
 
 	// ----- 3- Draw card number (if any) -----
 	if (cardNum != -1) // Note: cardNum -1 means no card
@@ -340,10 +339,12 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 {
 
 	///TODO: Validate the playerNum, if not valid return
-
+	if (playerNum < 1 && playerNum > 4)
 	
 
 	// Get the X & Y coordinates of the start point of the cell (its upper left corner)
+		// check error here>>>>>>
+	int cellStartX = GetCellStartX(cellPos);
 	int cellStartX = GetCellStartX(cellPos);
 	int cellStartY = GetCellStartY(cellPos);
 

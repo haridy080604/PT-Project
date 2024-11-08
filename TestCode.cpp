@@ -144,7 +144,7 @@ int main()
 	pOut->PrintMessage("3.1- (GetInteger) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 	pIn->GetInteger(pOut);
-	pIn->GetPointClicked(x,y)
+	pIn->GetPointClicked(x,y);
 
 	///TODO: Add code here to 
 	// 1- Call GetInteger Function and receive its returned integer

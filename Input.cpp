@@ -1,6 +1,7 @@
 #include "Input.h"
 
 #include "Output.h"
+#include <stdexcept>
 
 //======================================================================================//
 //								General Functions									    //
@@ -48,34 +49,33 @@ int Input::GetInteger(Output *pO) const
 	///TODO: implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
 	string input_value = GetSrting(pO);
-bool IsDigit = true;
+	bool IsDigit = true;
 
-for (int i=0;i<input_value.length();i++)
-{
-	if (!isdigit(input_value[i]))  
+	for (int i=0;i<input_value.length();i++)
 	{
-		IsDigit = false;
-		break;
+		if (!isdigit(input_value[i]))  
+		{
+			IsDigit = false;
+			break;
+		}
 	}
-}
 
-if (IsDigit && !input_value.empty())
-{
-	int Input_int = stoi(input_value);
-	pO->PrintMessage("You entered: " + input_value);  
-	return Input_int;
-}
-else
-{
-	pO->PrintMessage("Invalid Input. Kindly, Try again.");
-	return 0;
-}
-
-
+	if (IsDigit && !input_value.empty())
+	{
+		int Input_int = stoi(input_value);
+		pO->PrintMessage("You entered: " + input_value);  
+		return Input_int;
+	}
+	else
+	{
+		pO->PrintMessage("Invalid Input. Kindly, Try again.");
+		return 0;
+	}
 
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
 
-	//return 0; // this line should be changed with your implementation
+	// return 0; 
+	// this line should be changed with your implementation
 }
 
 //======================================================================================//
@@ -106,11 +106,16 @@ ActionType Input::GetUserAction() const
 			case ITM_ADD_LADDER: return ADD_LADDER;
 			case ITM_ADD_SNAKE: return ADD_SNAKE;
 			case ITM_ADD_CARD: return ADD_CARD;
+			case ITM_COPY_CARD: return COPY_CARD;
+			case ITM_CUT_CARD: return CUT_CARD;
+			case ITM_PASTE_CARD:return PASTE_CARD;
 			case ITM_EXIT: return EXIT;
 			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;			
-
+			
 				///TODO: Add cases for the other items of Design Mode
-
+				
+					
+					
 
 
 
@@ -134,8 +139,21 @@ ActionType Input::GetUserAction() const
 		///TODO:
 		// perform checks similar to Design mode checks above for the Play Mode
 		// and return the corresponding ActionType
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			switch (ClickedItemOrder)
+			{
+			case ITM_ROLL_DICE:return ROLL_DICE;
+			case ITM_SWITCH_TO_DESIGN_MODE:return TO_DESIGN_MODE;
 
-		return TO_DESIGN_MODE;	// just for now ==> This should be updated
+			default:return EMPTY;
+			}
+		}
+
+
+
+		/*return TO_DESIGN_MODE*/;	// just for now ==> This should be updated
 
 
 

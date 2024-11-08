@@ -206,9 +206,12 @@ void Output::CreateDesignModeToolBar() const
 	MenuItemImages[ITM_COPY_CARD] = "images\\Menu_copy_card.jpg";
 	MenuItemImages[ITM_CUT_CARD] = "images\\Menu_cut.jpg";
 	MenuItemImages[ITM_PASTE_CARD] = "images\\Menu_paste.jpg";
+	MenuItemImages[ITM_EDIT_CARD] = "images\\Menu_edit.jpg";
+	MenuItemImages[ITM_DELETE_GAME_OBJECT] = "images\\Menu_Delete.jpg";
+	MenuItemImages[ITM_SAVE_GRID] = "images\\Menu_Save_Grid.jpg";
+	MenuItemImages[ITM_OPEN_GRID] = "images\\Menu_Open.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\Menu_Exit.jpg";
 	MenuItemImages[ITM_SWITCH_TO_PLAY_MODE] = "images\\Menu_SwitchToGame.jpg";
-
 	///TODO: Prepare images for each menu item and add it to the list
 
 
@@ -237,7 +240,10 @@ void Output::CreatePlayModeToolBar() const
 	// ** MAKE SURE THAT THE IMAGES ARE .JPG FILES **
 	string MenuItemImages[PLAY_ITM_COUNT];
 	MenuItemImages[ITM_ROLL_DICE] = "images\\Menu_Dice.jpg";
+	MenuItemImages[ITM_INPUT_DICE_VALUE] = "images\\Menu_Input.jpg";
+	MenuItemImages[ITM_NEW_GAME] = "images\\Menu_new_game.jpg";
 	MenuItemImages[ITM_SWITCH_TO_DESIGN_MODE] = "images\\Menu_SwitchToGrid.jpg";
+	MenuItemImages[ITM_EXIT_GAME] = "images\\Menu_Exit.jpg";
 
 	///TODO: Prepare images for each menu item and add it to the list
 

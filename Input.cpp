@@ -47,13 +47,35 @@ int Input::GetInteger(Output *pO) const
 
 	///TODO: implement the GetInteger function as described in Input.h file 
 	//       using function GetString() defined above and function stoi()
-	
+	string input_value = GetSrting(pO);
+bool IsDigit = true;
+
+for (int i=0;i<input_value.length();i++)
+{
+	if (!isdigit(input_value[i]))  
+	{
+		IsDigit = false;
+		break;
+	}
+}
+
+if (IsDigit && !input_value.empty())
+{
+	int Input_int = stoi(input_value);
+	pO->PrintMessage("You entered: " + input_value);  
+	return Input_int;
+}
+else
+{
+	pO->PrintMessage("Invalid Input. Kindly, Try again.");
+	return 0;
+}
 
 
 
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
 
-	return 0; // this line should be changed with your implementation
+	//return 0; // this line should be changed with your implementation
 }
 
 //======================================================================================//

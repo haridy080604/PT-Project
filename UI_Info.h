@@ -25,6 +25,9 @@ enum DESIGN_MODE_ITEMS // The items of the Design Mode (you should add more item
 	ITM_ADD_LADDER,
 	ITM_ADD_SNAKE,
 	ITM_ADD_CARD,
+	ITM_COPY_CARD,
+	ITM_CUT_CARD,
+	ITM_PASTE_CARD,
 	ITM_EXIT,
 	ITM_SWITCH_TO_PLAY_MODE,
 	

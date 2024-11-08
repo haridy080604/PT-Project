@@ -339,12 +339,9 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 {
 
 	///TODO: Validate the playerNum, if not valid return
-	if (playerNum < 1 && playerNum > 4)
 	
 
 	// Get the X & Y coordinates of the start point of the cell (its upper left corner)
-		// check error here>>>>>>
-	int cellStartX = GetCellStartX(cellPos);
 	int cellStartX = GetCellStartX(cellPos);
 	int cellStartY = GetCellStartY(cellPos);
 

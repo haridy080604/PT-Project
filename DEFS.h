@@ -12,8 +12,8 @@ enum ActionType // The actions supported (add more as needed)
 	ADD_LADDER,		// Add Ladder Action
 	ADD_SNAKE,		// Add Snake Action	
 	ADD_CARD,		// Add Card Action	
-	COPY_CARD,
-	CUT_CARD,
+	COPY_CARD,		// copy card action
+	CUT_CARD,		// cut card action
 	PASTE_CARD,     // paste already existed item
 	EDIT_CARD,		//edit card
 	DELETE_GAME_OBJECT, // delete game object

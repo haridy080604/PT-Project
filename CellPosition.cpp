@@ -5,8 +5,8 @@
 CellPosition::CellPosition()
 {
 	// (-1) indicating an invalid cell (uninitialized by the user)
-	vCell = -1;
-	hCell = -1;
+	vCell = 0;
+	hCell = 0;
 
 }
 
@@ -137,7 +137,5 @@ void CellPosition::AddCellNum(int addedNum)
 			hCell = (newCellNum % 11) - 1;
 		vCell = (newCellNum - (hCell + 1)) / 11;
 	}
-
-
 }
 

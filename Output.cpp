@@ -28,7 +28,7 @@ Output::Output()
 	UI.PlayerInfoColor = DARKSLATEBLUE;
 
 	// Background Colors of toolbar and statusbar 
-	UI.ToolBarColor = BLUE;
+	UI.ToolBarColor = WHITE;
 	UI.StatusBarColor = LIGHTGRAY; 
 
 	// Line Colors of the borders of each cell
@@ -130,7 +130,7 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 	///TODO: Calculate the Width & Height of the integer "cardNum" if written using the Current Font
 	//       (Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
-
+	pWind->GetIntegerSize(w, h, cardNum);
 
 
 	// Calculate where to write the integer of the cardNum
@@ -140,7 +140,7 @@ void Output::DrawCardNumber(const CellPosition & cellPos, int cardNum) const
 
 
 	///TODO: Draw the Integer the representing the "cardNum" in the location (x,y)
-	
+	pWind->DrawInteger(x, y, cardNum);
 
 
 
@@ -278,19 +278,14 @@ void Output::PrintPlayersInfo(string info)
 	pWind->SetFont(20, BOLD , BY_NAME, "Verdana");   
 
 	int w=0, h=0;
-
 	///TODO: Calculate the Width and Height of the string if drawn using the current font 
 	//       (Use GetStringSize() window function) and set the "w" and "h" variables with its width and height
-
-
-
 	// Set the start X & Y coordinate of drawing the string
 	int x = UI.width - w - 20; // space 20 before the right-side of the window
 	                           // ( - w ) because x is the coordinate of the start point of the string (upper left)
 	int y = (UI.ToolBarHeight - h) / 2; // in the Middle of the toolbar height
 
 	///TODO: Draw the string "info" in the specified location (x, y)
-
 
 
 }
@@ -314,11 +309,7 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 		pWind->SetBrush(UI.CellColor_HasCard);
 
 	///TODO: Draw the Cell Rectangle using the appropriate coordinates
-	for (int i = 0;i < 9;i++) {
-		for (int j = 0;j < 11;j++) {
-			pWind->DrawRectangle(j * UI.CellWidth, UI.ToolBarHeight + i * UI.CellHeight, (j + 1) * UI.CellWidth - 1, (i + 1) * UI.CellHeight + UI.ToolBarHeight - 1);
-		}
-	}
+	pWind->DrawRectangle(cellStartX, cellStartY, cellStartX + UI.CellWidth, cellStartY + UI.CellHeight);
 	// ----- 2- Draw the CELL number (the small number at the bottom right of the cell) -----
 	pWind->SetPen(UI.CellNumColor);
 	pWind->SetFont(UI.CellNumFont, BOLD , BY_NAME, "Verdana");   
@@ -326,14 +317,14 @@ void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 	int w=0, h=0;
 	///TODO: Get the Width and Height of the Cell Number if written using the current font 
 	//(Use GetIntegerSize() window function) and set the "w" and "h" variables with its width and height
+	pWind->GetIntegerSize(w, h, cellNum);
 	// Calculate X & Y coordinate of the start point of writing the card number (upper left point of the cell num)
 	int x = cellStartX + (UI.CellWidth - w - 1);   // space 1 from the end of the cell width
 												   // ( - w ) because x is for the start point of cell num (num's left corner)
 	int y = cellStartY + (UI.CellHeight - h - 1);  // space 1 from the end of the cell height
 												   // ( - w ) because y is for the start point of cell num (num's upper corner)
-	
 	///TODO: Draw the cell number in the x and y location
-
+	pWind->DrawInteger(x, y,cellNum);
 	// ----- 3- Draw card number (if any) -----
 	if (cardNum != -1) // Note: cardNum -1 means no card
 		DrawCardNumber(cellPos, cardNum);

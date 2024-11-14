@@ -1,5 +1,6 @@
 #include "Input.h"
 #include "Output.h"
+#include <string>
 
 //This is a test code to test the Input and Output classes
 
@@ -160,14 +161,14 @@ int main()
 	/// =========================
 	pOut->PrintMessage("3.2- (GetCellClicked) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
-
-
+	for (int i = 0;i < 5;i++) {
+		CellPosition c = pIn->GetCellClicked();
+		pOut->PrintMessage("Vcell = " + to_string(c.VCell()) + " Hcell = " + to_string(c.HCell()));
+	}
 	///TODO: Add code here to 
 	// 1- Call function GetCellClicked
 	// 2- Print on the status bar the vCell and hCell of the clicked cell
 	// 3- Repeat Step 1 and 2 five times
-
-
 	pOut->PrintMessage("FINISHED - (GetCellClicked) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
@@ -176,7 +177,6 @@ int main()
 	/// =====================
 	pOut->PrintMessage("3.3- (GetSrting) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
-
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar

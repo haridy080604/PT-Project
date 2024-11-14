@@ -109,6 +109,10 @@ ActionType Input::GetUserAction() const
 			case ITM_COPY_CARD: return COPY_CARD;
 			case ITM_CUT_CARD: return CUT_CARD;
 			case ITM_PASTE_CARD:return PASTE_CARD;
+			case ITM_EDIT_CARD:return EDIT_CARD;
+			case ITM_DELETE_GAME_OBJECT:return DELETE_GAME_OBJECT;
+			case ITM_SAVE_GRID:return SAVE_GRID;
+			case ITM_OPEN_GRID:return OPEN_GRID;
 			case ITM_EXIT: return EXIT;
 			case ITM_SWITCH_TO_PLAY_MODE: return TO_PLAY_MODE;			
 			
@@ -145,8 +149,10 @@ ActionType Input::GetUserAction() const
 			switch (ClickedItemOrder)
 			{
 			case ITM_ROLL_DICE:return ROLL_DICE;
+			case ITM_INPUT_DICE_VALUE:return INPUT_DICE_VALUE;
+			case ITM_NEW_GAME:return NEW_GAME;
 			case ITM_SWITCH_TO_DESIGN_MODE:return TO_DESIGN_MODE;
-
+			case ITM_EXIT_GAME:return EXIT_GAME;
 			default:return EMPTY;
 			}
 		}

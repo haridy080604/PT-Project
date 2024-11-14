@@ -51,7 +51,6 @@ int main()
 	///       with cardNum 1, 2, 3, 4 and 10 respectively
 
 
-
 	pOut->PrintMessage("FINISHED - Drawing (Cells with CARDS) Test,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
@@ -268,7 +267,27 @@ int main()
 		case ADD_CARD:
 			pOut->PrintMessage("Action: ADD_CARD , Click anywhere");
 			break;
-
+		case COPY_CARD:
+			pOut->PrintMessage("Action: COPY_CARD , click anywhere");
+			break;
+		case CUT_CARD:
+			pOut->PrintMessage("Action: CUT_CARD , click anywhere");
+			break;
+		case PASTE_CARD:
+			pOut->PrintMessage("Action: PASTE_CARD , click anywhere");
+			break;
+		case EDIT_CARD:
+			pOut->PrintMessage("Action: EDIT_CARD , click anywhere");
+			break;
+		case DELETE_GAME_OBJECT:
+			pOut->PrintMessage("Action: DELETE_GAME_OBJECT , click anywhere");
+			break;
+		case SAVE_GRID:
+			pOut->PrintMessage("Action: SAVE_GRID , click anywhere");
+			break;
+		case OPEN_GRID:
+			pOut->PrintMessage("Action: OPEN_GRID , click anywhere");
+			break;
 		case EXIT:				
 			break;
 
@@ -287,16 +306,22 @@ int main()
 		case ROLL_DICE:
 			pOut->PrintMessage("Action: ROLL_DICE , Click anywhere");
 			break;
-
+		case INPUT_DICE_VALUE:
+			pOut->PrintMessage("Action: INPUT_DICE_VALUE, click anywhere");
+			break;
+		case NEW_GAME:
+			pOut->PrintMessage("Action: NEW_GAME , click anywhere");
+			break;
 		case TO_DESIGN_MODE:
 			pOut->PrintMessage("Action: TO_DESIGN_MODE , Click anywhere");
 			pOut->CreateDesignModeToolBar();
 			break;
-
+		case EXIT_GAME:
+			break;
 			///TODO:  ADD Cases similarly for ALL the remaining actions of PLAY Mode
 
 		}
-	}while(ActType != EXIT);
+	}while(ActType != EXIT && ActType != EXIT_GAME);
 
 
 	/// Exiting

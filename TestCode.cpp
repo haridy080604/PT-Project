@@ -50,7 +50,11 @@ int main()
 	///TODO: Call Function DrawCell of Class Ouput Multiple Times
 	///       to draw cells in cell locations of: card_1, card_2, ..., card_10 declared above
 	///       with cardNum 1, 2, 3, 4 and 10 respectively
-
+	pOut->DrawCell(card_1, 1);
+	pOut->DrawCell(card_2, 2);
+	pOut->DrawCell(card_3, 3);
+	pOut->DrawCell(card_4, 4);
+	pOut->DrawCell(card_10, 10);
 
 	pOut->PrintMessage("FINISHED - Drawing (Cells with CARDS) Test,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -161,7 +165,7 @@ int main()
 	/// =========================
 	pOut->PrintMessage("3.2- (GetCellClicked) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
-	for (int i = 0;i < 5;i++) {
+	for (int i = 0;i <= 5;i++) {
 		CellPosition c = pIn->GetCellClicked();
 		pOut->PrintMessage("Vcell = " + to_string(c.VCell()) + " Hcell = " + to_string(c.HCell()));
 	}
@@ -183,7 +187,9 @@ int main()
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 	// NOTE: GetString() is already implemented. It is just required from you to call it
-
+	string user_input = pIn->GetSrting(pOut);
+	pOut->PrintMessage("You Entered: " + user_input);
+	pIn->GetPointClicked(x, y);
 
 
 	pOut->PrintMessage("FINISHED - (GetSrting) Test, Click to continue");
@@ -201,7 +207,6 @@ int main()
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
 	CellPosition cellpos_1(0, 0);
-
 	///TODO:
 	// 1- Ask user to enter an integer and read it using GetInteger()
 	// 2- Call SetVCell() of cellpos_1 with that integer

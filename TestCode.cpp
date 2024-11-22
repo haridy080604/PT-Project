@@ -50,13 +50,11 @@ int main()
 	///TODO: Call Function DrawCell of Class Ouput Multiple Times
 	///       to draw cells in cell locations of: card_1, card_2, ..., card_10 declared above
 	///       with cardNum 1, 2, 3, 4 and 10 respectively
-
 	pOut->DrawCell(card_1, 1);
 	pOut->DrawCell(card_2, 2);
 	pOut->DrawCell(card_3, 3);
 	pOut->DrawCell(card_4, 4);
 	pOut->DrawCell(card_10, 10);
-
 
 	pOut->PrintMessage("FINISHED - Drawing (Cells with CARDS) Test,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -74,13 +72,21 @@ int main()
 	///TODO: Call Function DrawPlayer of Class Ouput Multiple Times
 	///       to draw the following players:
 	///       playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_1 declared above) 
+	pOut->DrawPlayer(player_1, 0, UI.PlayerColors[0]);
 	///       playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_1 declared above) 
+	pOut->DrawPlayer(player_1, 1, UI.PlayerColors[1]);
 	///       playerNum (2) with color (PlayerColors[2] defined in UI object) in cell position (player_1 declared above) 
+	pOut->DrawPlayer(player_1, 2, UI.PlayerColors[2]);
 	///       playerNum (3) with color (PlayerColors[3] defined in UI object) in cell position (player_1 declared above) 
-	///       playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_15 declared above) 
-	///       playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) 
+	pOut->DrawPlayer(player_1, 3, UI.PlayerColors[3]);
+	///       playerNum (0) with color (PlayerColors[0] defined in UI object) in cell position (player_15 declared above)
+	pOut->DrawPlayer(player_15, 0, UI.PlayerColors[0]);
+	///       playerNum (1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above)
+	pOut->DrawPlayer(player_99, 1, UI.PlayerColors[1]);
 	///       playerNum (5) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) 
+	pOut->DrawPlayer(player_1, 5, UI.PlayerColors[1]);
 	///       playerNum (-1) with color (PlayerColors[1] defined in UI object) in cell position (player_99 declared above) 
+	pOut->DrawPlayer(player_99, -1, UI.PlayerColors[1]);
 	///       Note that there are some players drawing (INVALID)
 
 
@@ -167,7 +173,6 @@ int main()
 	/// =========================
 	pOut->PrintMessage("3.2- (GetCellClicked) Test, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
-
 	for (int i = 0;i <= 5;i++) {
 		CellPosition c = pIn->GetCellClicked();
 		pOut->PrintMessage("Vcell = " + to_string(c.VCell()) + " Hcell = " + to_string(c.HCell()));

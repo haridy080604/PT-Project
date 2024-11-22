@@ -109,9 +109,13 @@ int main()
 	///TODO: Call Function DrawLadder of Class Ouput Multiple Times
 	///       to draw the following ladders:
 	///       a ladder from start_1 to end_1 declared above
+	pOut->DrawLadder(start_1, end_1);
 	///       a ladder from start_2 to end_2 declared above
-	///       a ladder from start_1 to end_2 declared above 
+	pOut->DrawLadder(start_2, end_2);
+	///       a ladder from start_1 to end_2 declared above
+	pOut->DrawLadder(start_1, end_2);
 	///       a ladder from end_1 to start_1 declared above 
+	pOut->DrawLadder(end_1, start_1);
 	/// Note that some ladders are invalid
 	
 
@@ -133,9 +137,13 @@ int main()
 	///TODO: Call Function DrawSnake of Class Ouput Multiple Times
 	///       to draw the following snakes:
 	///       a snake from start_24 to end_24 declared above
+	pOut->DrawSnake(start_24, end_24);
 	///       a snake from start_98 to end_32 declared above
+	pOut->DrawSnake(start_98, end_32);
 	///       a snake from start_98 to end_24 declared above
+	pOut->DrawSnake(start_98, end_24);
 	///       a snake from end_24 to start_24 declared above 
+	pOut->DrawSnake(end_24, start_24);
 	///  Note that some snakes are invalid
 	
 
@@ -195,8 +203,8 @@ int main()
 	// 2- After reading the string clear the status bar
 	// 3- print on the status bar "You Entered" then print the string
 	// NOTE: GetString() is already implemented. It is just required from you to call it
-	string user_input = pIn->GetSrting(pOut);
-	pOut->PrintMessage("You Entered: " + user_input);
+	string user_string = pIn->GetSrting(pOut);
+	pOut->PrintMessage("You Entered: " + user_string);
 	pIn->GetPointClicked(x, y);
 
 

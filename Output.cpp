@@ -376,7 +376,7 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 {
 
 	///TODO: Validate the Cell Position (Must be Vertical Cells AND toCell is above fromCell, otherwise, Do NOT draw)
-	if (fromCell.HCell() != toCell.HCell() || (fromCell.VCell() >= toCell.VCell()))
+	if (fromCell.HCell() != toCell.HCell() || (fromCell.VCell() <= toCell.VCell()))
 	{
 		return;
 	}
@@ -417,7 +417,7 @@ void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCe
 	// Check the drawn ladders in the project document and imitate it
 
 	///TODO: Draw the cross horizontal lines of the ladder using the appropriate coordinates
-	for (int i = fromCell.VCell()+1; i < toCell.VCell(); i++) 
+	for (int i = fromCell.VCell()-1; i > toCell.VCell(); i--) 
 	{
 		int hori = GetCellStartY(CellPosition(i, fromCell.HCell())) + UI.CellHeight / 2;
 		pWind->DrawLine(x12, hori, x34,hori);
@@ -431,7 +431,7 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 {
 
 	///TODO: Validate the fromCell and toCell (Must be Vertical and toCell is below fromCell otherwise do NOT draw)
-	if ((fromCell.HCell() != toCell.HCell())|| (fromCell.VCell() <= toCell.VCell()))
+	if ((fromCell.HCell() != toCell.HCell())|| (fromCell.VCell() >= toCell.VCell()))
 	{
 		return;
 	}
@@ -468,14 +468,14 @@ void Output::DrawSnake(const CellPosition & fromCell, const CellPosition & toCel
 	///TODO: Set the coordinates of the 4 points of the Polygon
 	//       Check the snakes drawn in the project document and draw it the same way
 	int Xmid = x12;
-	int Yabove = y2 - yChange;
-	int Ydown = y2 + yChange;
+	int Yabove = y1 + yChange;
+	int Ydown = y1 - yChange;
 	int xLeft = x12 - xChange;
 	int xright = x12 + xChange;
 
 
 	int HeadX[4] = { Xmid, xright, Xmid, xLeft };
-	int HeadY[4] = { Yabove, y2, Ydown, y2 };
+	int HeadY[4] = { Yabove, y1, Ydown, y1 };
 
 	///TODO: Draw the Polygon (diamond) representing the Snake's Head
 	//       Check the snakes drawn in the project document and draw it the same way

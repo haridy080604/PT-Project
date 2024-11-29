@@ -6,15 +6,15 @@
 
 int main()
 {
-	int x,y;
+	int x, y;
 
 	//Create Input and Output objects to test
-	Output * pOut = new Output();
-	Input * pIn = pOut->CreateInput();
+	Output* pOut = new Output();
+	Input* pIn = pOut->CreateInput();
 
 	//Starting the test
 	pOut->PrintMessage("This demo is to test classes of phase 1, Click anywhere to start the test");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ int main()
 	///////////////////////////////////////////////////////////////////////////////////
 
 	pOut->PrintMessage("TEST1: Drawing Tool bar, Grid and Status bar, Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -33,18 +33,18 @@ int main()
 	///////////////////////////////////////////////////////////////////////////////////
 
 	pOut->PrintMessage("TEST2: Testing the [ Output ] class, Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	/// 2.1- Drawing Cells with Cards Test ///
 	/// ===================================
 	pOut->PrintMessage("2.1- Drawing (Cells with CARDS) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	CellPosition card_1 (0, 0);  // assume card number is : 1
-	CellPosition card_2 (0, 10); // assume card number is : 2
-	CellPosition card_3 (8, 0);  // assume card number is : 3
-	CellPosition card_4 (8, 10); // assume card number is : 4
-	CellPosition card_10 (4, 5); // assume card number is : 10
+	CellPosition card_1(0, 0);  // assume card number is : 1
+	CellPosition card_2(0, 10); // assume card number is : 2
+	CellPosition card_3(8, 0);  // assume card number is : 3
+	CellPosition card_4(8, 10); // assume card number is : 4
+	CellPosition card_10(4, 5); // assume card number is : 10
 
 
 	///TODO: Call Function DrawCell of Class Ouput Multiple Times
@@ -57,16 +57,16 @@ int main()
 	pOut->DrawCell(card_10, 10);
 
 	pOut->PrintMessage("FINISHED - Drawing (Cells with CARDS) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	/// 2.2- Drawing Players Test ///
 	/// ==============================
 	pOut->PrintMessage("2.2- Drawing (Players) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	CellPosition player_1 (8, 0);
-	CellPosition player_15 (2, 15);
-	CellPosition player_99 (2, 5);
+	CellPosition player_1(8, 0);
+	CellPosition player_15(2, 15);
+	CellPosition player_99(2, 5);
 
 
 	///TODO: Call Function DrawPlayer of Class Ouput Multiple Times
@@ -91,20 +91,20 @@ int main()
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Players) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	/// 2.3- Drawing Ladders ///
 	/// ====================
 	pOut->PrintMessage("2.3- Drawing (Ladders) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	// remember that the cell position (0,0) is the upper left most cell
 	// the ladder is added from start (bottom) cell to end (up) cell.
-	CellPosition start_1 (5, 0);
-	CellPosition end_1 (0, 0);
+	CellPosition start_1(5, 0);
+	CellPosition end_1(0, 0);
 
-	CellPosition start_2 (7, 10);
-	CellPosition end_2 (3, 10);
+	CellPosition start_2(7, 10);
+	CellPosition end_2(3, 10);
 
 	///TODO: Call Function DrawLadder of Class Ouput Multiple Times
 	///       to draw the following ladders:
@@ -117,22 +117,22 @@ int main()
 	///       a ladder from end_1 to start_1 declared above 
 	pOut->DrawLadder(end_1, start_1);
 	/// Note that some ladders are invalid
-	
+
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Ladders) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	/// 2.4- Drawing Snakes ///
 	/// ====================
 	pOut->PrintMessage("2.4- Drawing (Snakes) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	CellPosition start_24 (6, 1);
-	CellPosition end_24 (8, 1);
+	CellPosition start_24(6, 1);
+	CellPosition end_24(8, 1);
 
-	CellPosition start_98 (0, 9);
-	CellPosition end_32 (6, 9);
+	CellPosition start_98(0, 9);
+	CellPosition end_32(6, 9);
 
 	///TODO: Call Function DrawSnake of Class Ouput Multiple Times
 	///       to draw the following snakes:
@@ -145,11 +145,11 @@ int main()
 	///       a snake from end_24 to start_24 declared above 
 	pOut->DrawSnake(end_24, start_24);
 	///  Note that some snakes are invalid
-	
+
 
 
 	pOut->PrintMessage("FINISHED - Drawing (Snakes) Test,  Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 3: 
@@ -157,14 +157,14 @@ int main()
 	///////////////////////////////////////////////////////////////////////////////////
 
 	pOut->PrintMessage("TEST3: Now Time to test class [ Input ], Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	/// 3.1- Getting Integer ///
 	/// ===========================
 	pOut->PrintMessage("3.1- (GetInteger) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 	pIn->GetInteger(pOut);
-	pIn->GetPointClicked(x,y);
+	pIn->GetPointClicked(x, y);
 
 	///TODO: Add code here to 
 	// 1- Call GetInteger Function and receive its returned integer
@@ -175,12 +175,12 @@ int main()
 
 
 	pOut->PrintMessage("FINISHED - (GetInteger) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	/// 3.2- Getting Cell Clicked ///
 	/// =========================
 	pOut->PrintMessage("3.2- (GetCellClicked) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 	for (int i = 0;i <= 5;i++) {
 		CellPosition c = pIn->GetCellClicked();
 		pOut->PrintMessage("Vcell = " + to_string(c.VCell()) + " Hcell = " + to_string(c.HCell()));
@@ -190,13 +190,13 @@ int main()
 	// 2- Print on the status bar the vCell and hCell of the clicked cell
 	// 3- Repeat Step 1 and 2 five times
 	pOut->PrintMessage("FINISHED - (GetCellClicked) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 
 	/// 3.3- Reading a String ///
 	/// =====================
 	pOut->PrintMessage("3.3- (GetSrting) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///TODO: Add code here to 
 	// 1- Read a string from the user on the status bar
@@ -209,20 +209,46 @@ int main()
 
 
 	pOut->PrintMessage("FINISHED - (GetSrting) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 4:	
 	//			Test the functions of CellPosition Class
 	///////////////////////////////////////////////////////////////////////////////////
-
 	pOut->PrintMessage("TEST4: Testing the [ CellPosition ] class, Click anywhere to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->PrintMessage("4.1- (Setters with Validation) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
-	CellPosition cellpos_1(0, 0);
+
+
+	for (int i = 0; i < 5; i++)
+	{
+
+		CellPosition cellpos_1(0, 0);
+		pOut->PrintMessage("Enter an integer for vCell: ");
+		cellpos_1.SetVCell(pIn->GetInteger(pOut));
+		pIn->GetPointClicked(x, y);
+		pOut->PrintMessage("now the vCell = " + to_string(cellpos_1.VCell()));
+
+		pIn->GetPointClicked(x, y);
+	}
+
+
+	for (int i = 0; i < 5; i++)
+	{
+
+
+		CellPosition cellpos_1(0, 0);
+		pOut->PrintMessage("Enter an integer for hCell: ");
+		cellpos_1.SetHCell(pIn->GetInteger(pOut));
+		pIn->GetPointClicked(x, y);
+		pOut->PrintMessage("now the hCell = " + to_string(cellpos_1.HCell()));
+
+		pIn->GetPointClicked(x, y);
+
+	}
 	///TODO:
 	// 1- Ask user to enter an integer and read it using GetInteger()
 	// 2- Call SetVCell() of cellpos_1 with that integer
@@ -232,10 +258,24 @@ int main()
 	// 6- Repeat all the above steps to test SetHCell() function instead with the needed modifications
 
 	pOut->PrintMessage("FINISHED - (Setters with Validation) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->PrintMessage("4.2- (GetCellNumFromPosition) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	for (int i = 0; i < 5; i++)
+	{
+		pOut->PrintMessage("enter vcell: ");
+
+		int vvcell = pIn->GetInteger(pOut);
+		pIn->GetPointClicked(x, y);
+		pOut->PrintMessage("enter hcell: ");
+		int cccell = pIn->GetInteger(pOut);
+		pIn->GetPointClicked(x, y);
+
+		CellPosition cellpos_2(vvcell, cccell);
+		pOut->PrintMessage("the cell number = " + to_string(cellpos_2.GetCellNum()));
+		pIn->GetPointClicked(x, y);
+	}
 
 	/// TODO:
 	// 1- Read from user two integers representing vCell and hCell
@@ -245,10 +285,22 @@ int main()
 	// 5- Repeat the above steps Five TIMES
 
 	pOut->PrintMessage("FINISHED - (GetCellNumFromPosition) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	pOut->PrintMessage("4.3- (GetCellPositionFromNum) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	for (int i = 0; i < 5; i++)
+	{
+
+
+
+		pOut->PrintMessage("enter the cell number : ");
+		int ncell = pIn->GetInteger(pOut);
+		pIn->GetPointClicked(x, y);
+		CellPosition cellpos_3(ncell);
+		pOut->PrintMessage("the vcell  = " + to_string(cellpos_3.VCell()) + " the hcell  = " + to_string(cellpos_3.HCell()));
+		pIn->GetPointClicked(x, y);
+	}
 
 	/// TODO:
 	// 1- Read from user one integer representing cellNum
@@ -258,7 +310,7 @@ int main()
 	// 5- Repeat the above steps Five TIMES
 
 	pOut->PrintMessage("FINISHED - (GetCellPositionFromNum) Test, Click to continue");
-	pIn->GetPointClicked(x,y);	//Wait for any click
+	pIn->GetPointClicked(x, y);	//Wait for any click
 
 	///////////////////////////////////////////////////////////////////////////////////
 	// TEST 5: 
@@ -309,7 +361,7 @@ int main()
 		case OPEN_GRID:
 			pOut->PrintMessage("Action: OPEN_GRID , click anywhere");
 			break;
-		case EXIT:				
+		case EXIT:
 			break;
 
 		case TO_PLAY_MODE:
@@ -318,6 +370,7 @@ int main()
 			pOut->CreatePlayModeToolBar();
 			///TODO:  Call Function (PrintPlayersInfo) of Class Output with a string similar to 
 			//        the one given in the screenshot of project document
+			pOut->PrintPlayersInfo("P0(100, 0), P1(100, 0), P2(100, 0), P3(100, 0) | Curr = 0");
 			break;
 
 
@@ -342,17 +395,16 @@ int main()
 			///TODO:  ADD Cases similarly for ALL the remaining actions of PLAY Mode
 
 		}
-	}while(ActType != EXIT && ActType != EXIT_GAME);
+	} while (ActType != EXIT && ActType != EXIT_GAME);
 
 
 	/// Exiting
 	pOut->PrintMessage("Action: EXIT, test is finished, click anywhere to exit");
-	pIn->GetPointClicked(x,y);
+	pIn->GetPointClicked(x, y);
 
 
 	delete pIn;
-	delete pOut;	
+	delete pOut;
 	return 0;
 }
-
 

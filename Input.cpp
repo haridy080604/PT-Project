@@ -68,8 +68,8 @@ int Input::GetInteger(Output *pO) const
 	}
 	else
 	{
-		pO->PrintMessage("Invalid Input. Kindly, Try again.");
-		return 0;
+		pO->PrintMessage("Invalid Input. returned value is -1");
+		return -1;
 	}
 
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)

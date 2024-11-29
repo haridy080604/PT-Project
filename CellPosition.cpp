@@ -94,12 +94,15 @@ int CellPosition::GetCellNumFromPosition(const CellPosition& cellPosition)
 	// Note:
 	// this is a static function (do NOT need a calling object so CANNOT use the data members of the calling object, vCell&hCell)
 	// just define an integer that represents cell number and calculate it using the passed cellPosition then return it
+	if (cellPosition.hCell <= 10 && cellPosition.vCell <= 8) {
+		int cellnumber = (cellPosition.hCell + 1) + (8 - cellPosition.vCell) * 11;
 
-	int cellnumber = (cellPosition.hCell + 1) + (8 - cellPosition.vCell) * 11;
 
 
-
-	return cellnumber; // this line should be changed with your implementation
+		return cellnumber;
+	}
+	else return -1;
+	// this line should be changed with your implementation
 }
 
 CellPosition CellPosition::GetCellPositionFromNum(int cellNum)
@@ -135,7 +138,7 @@ void CellPosition::AddCellNum(int addedNum)
 			hCell = 10;
 		else
 			hCell = (newCellNum % 11) - 1;
-		vCell = (newCellNum - (hCell + 1)) / 11;
+		vCell = 8 + ((hCell + 1 - newCellNum) / 11);
 	}
 }
 

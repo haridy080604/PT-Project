@@ -5,8 +5,8 @@
 CellPosition::CellPosition()
 {
 	// (-1) indicating an invalid cell (uninitialized by the user)
-	vCell = 0;
-	hCell = 0;
+	vCell = -1;
+	hCell = -1;
 
 }
 
@@ -65,7 +65,7 @@ int CellPosition::HCell() const
 
 bool CellPosition::IsValidCell() const
 {
-	if (vCell >= 0 && vCell <= 10 && hCell >= 0 && hCell <= 10)
+	if (vCell >= 0 && vCell <= 8 && hCell >= 0 && hCell <= 10)
 	{
 
 		return true;

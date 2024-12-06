@@ -141,4 +141,3 @@ void CellPosition::AddCellNum(int addedNum)
 		vCell = 8 + ((hCell + 1 - newCellNum) / 11);
 	}
 }
-

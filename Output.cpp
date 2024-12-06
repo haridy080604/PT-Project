@@ -417,10 +417,10 @@ void Output::DrawLadder(const CellPosition& fromCell, const CellPosition& toCell
 	// Check the drawn ladders in the project document and imitate it
 
 	///TODO: Draw the cross horizontal lines of the ladder using the appropriate coordinates
-	for (int i = fromCell.VCell(); i >toCell.VCell(); i--) 
+	for (int i = fromCell.VCell(); i > toCell.VCell(); i--)
 	{
-		int hori = GetCellStartY(CellPosition(i, fromCell.HCell())) ;
-		pWind->DrawLine(x12, hori, x34,hori);
+		int hori = GetCellStartY(CellPosition(i, fromCell.HCell()));
+		pWind->DrawLine(x12, hori, x34, hori);
 	}
 
 }

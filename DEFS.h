@@ -21,7 +21,7 @@ enum ActionType // The actions supported (add more as needed)
 	OPEN_GRID,		//open existing grid
 	EXIT,			// Exit Application
 	TO_PLAY_MODE,	// Go to Play Mode
-	
+
 	///TODO: Add more action types of Design Mode
 
 	//  [2] Actions of Play Mode

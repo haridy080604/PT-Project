@@ -10,7 +10,7 @@ void Card::SetCardNumber(int cnum)
 	cardNumber = cnum; // needs validation
 }
 
-int Card::GetCardNumber()
+int Card::GetCardNumber() const
 {
 	return cardNumber;
 }

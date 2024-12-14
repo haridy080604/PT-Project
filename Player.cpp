@@ -38,6 +38,12 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
+void Player::setTurnCount(int n) {
+	if (n >= 0 && n < MaxPlayerCount) {
+		turnCount = n;
+	}
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

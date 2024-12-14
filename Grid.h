@@ -60,7 +60,7 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
-
+	CellPosition GetStartCell() const; //Added by the team
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========

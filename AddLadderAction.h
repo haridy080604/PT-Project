@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include "Action.h"
@@ -14,13 +15,13 @@ class AddLadderAction : public Action
 
 public:
 
-	AddLadderAction(ApplicationManager *pApp); // A Constructor
+	AddLadderAction(ApplicationManager* pApp); // A Constructor
 
 	virtual void ReadActionParameters(); // Reads AddLadderAction action parameters (startPos, endPos)
-	
+
 	virtual void Execute(); // Creates a new Ladder Object 
-	                        // then Sets this Ladder object to the GameObject Pointer of its Cell
-	
+	// then Sets this Ladder object to the GameObject Pointer of its Cell
+
 
 	virtual ~AddLadderAction(); // Virtual Destructor
 

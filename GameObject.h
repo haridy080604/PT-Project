@@ -3,7 +3,6 @@
 
 #include<fstream>
 #include "Grid.h"
-#include "GameObjectsType.h"
 
 // Base Class for All Game Objects ( ladders, snakes and cards )
 class GameObject
@@ -29,15 +28,15 @@ public:
 	// (The effect depends on the GameObject type, so virtual)
 	// For example, applying a ladder is by moving player up, and so on
 
-	virtual bool IsOverlapping(const Grid* pGrid, GameObject* newObj) const; // we didn't make it pure virtual
+	virtual bool IsOverlapping(GameObject* newObj) const;
 	// as Card didn't need to have overlapping
 
 
-	virtual void Save(ofstream& OutFile, GameObjectsType Obj) const = 0;	// Saves the GameObject parameters to the file
+	//virtual void Save(ofstream& OutFile, GameObjectsType Obj) const = 0;	// Saves the GameObject parameters to the file
 	//virtual void Load(ifstream &Infile, GameObjectsType Obj) = 0;	// Loads and Reads the GameObject parameters from the file
 
 
-	virtual GameObject* Load(ifstream& InFile) = 0;
+	//virtual GameObject* Load(ifstream& InFile) = 0;
 
 	virtual ~GameObject(); // Virtual destructor
 };

@@ -21,8 +21,7 @@ public:
     // Override virtual functions from Card base class
     virtual void ReadCardParameters(Grid* pGrid);
     virtual void Apply(Grid* pGrid, Player* pPlayer);
-    virtual void Save(ofstream& OutFile, GameObjectsType type) const;
-    virtual void Read(ifstream& InFile);
+
 
     // Additional methods
     static void EndPrint();

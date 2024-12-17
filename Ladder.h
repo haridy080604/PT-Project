@@ -5,7 +5,6 @@
 
 #include "Grid.h"
 #include "GameObject.h"
-#include "GameObjectsType.h"
 #include<fstream>
 using namespace std;
 
@@ -25,14 +24,12 @@ public:
 	virtual void Draw(Output* pOut) const; // Draws a ladder from its start cell to its end cell
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to ladder's end cell
-	
+	bool IsOverlapping(GameObject* newObj) const override;
 
-	virtual void Save(ofstream& OutFile, GameObjectsType Obj) const;
-	//virtual void Load(ifstream& OutFile, GameObjectsType Obj) const;
+
 	
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
-	virtual GameObject* Load(ifstream& InFile);
 
 	virtual ~Ladder(); // Virtual destructor
 };

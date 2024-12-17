@@ -48,26 +48,6 @@ void CardNine::Apply(Grid* pGrid, Player* pPlayer)
     }
 }
 
-// Saves the card parameters to a file
-void CardNine::Save(ofstream& OutFile, GameObjectsType Obj) const
-{
-    if (Obj == OBJ_CARD_9)
-    {
-        Card::Save(OutFile, Obj); // Save the base card info
-        OutFile << moveToCell.GetCellNum() << std::endl; // Save the target cell number
-    }
-}
-
-// Loads the card parameters from a file
-void CardNine::Read(ifstream& InFile)
-{
-    Card::Read(InFile); // Read the base card info
-
-    int cellNum;
-    InFile >> cellNum; // Read the target cell number
-    moveToCell = CellPosition::GetCellPositionFromNum(cellNum);
-}
-
 // Destructor
 CardNine::~CardNine()
 {

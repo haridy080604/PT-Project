@@ -2,7 +2,7 @@
 #include "Output.h"
 #include "Player.h"
 #include "Input.h"
-
+#include"Snake.h"
 Ladder::Ladder(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 
@@ -34,30 +34,71 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	// 2- Apply the ladder's effect by moving the player to the endCellPos
 	pGrid->UpdatePlayerCell(pPlayer, GetEndPosition());
 }
+bool Ladder::IsOverlapping(GameObject* newObj) const
+{
+	if (this == newObj)
+		return false;
+	if (dynamic_cast<Ladder*>(newObj))
+	{
+		int h1 = position.HCell();
+		int h2 = newObj->GetPosition().HCell();
+
+		if (h1 == h2)
+		{
+
+			int StartCell1 = CellPosition::GetCellNumFromPosition(position);
+			int EndCell1 = CellPosition::GetCellNumFromPosition(endCellPos);
+
+			Ladder* pladder = (Ladder*)newObj;
+
+			int StartCell2 = CellPosition::GetCellNumFromPosition(newObj->GetPosition());
+			int EndCell2 = CellPosition::GetCellNumFromPosition(pladder->GetEndPosition());
+
+			if (!((StartCell2 > EndCell1 && EndCell2 > EndCell1) || (StartCell2 < StartCell1 && EndCell2 < StartCell1)))
+
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+
+	if (dynamic_cast<Snake*>(newObj))
+	{
+		int h1 = position.HCell();
+		int h2 = newObj->GetPosition().HCell();
+
+		if (h1 == h2)
+		{
+			int StartCell1 = CellPosition::GetCellNumFromPosition(position);
+			int EndCell1 = CellPosition::GetCellNumFromPosition(endCellPos);
+
+			Snake* psnake = (Snake*)newObj;
+
+			int StartCell2 = CellPosition::GetCellNumFromPosition(newObj->GetPosition());
+			int EndCell2 = CellPosition::GetCellNumFromPosition(psnake->GetEndPosition());
+
+
+			if (EndCell1 == StartCell2 || EndCell2 == StartCell1)
+			{
+				return true;
+			}
+
+		}
+
+
+		return false;
+
+	}
+
+}
 
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;
-}
-
-void Ladder::Save(ofstream& OutFile, GameObjectsType Obj) const {
-	if (Obj == OBJ_LADDER) // check if Obj is Ladder
-	{
-		GameObject::Save(OutFile, Obj); //print the start Position of Ladder 
-		OutFile << GetEndPosition().GetCellNum() << '\n'; // print the The end Positon of ladder
-	}
-}
-
-GameObject* Ladder::Load(ifstream& InFile) {
-
-	GameObject::Load(InFile);
-
-	int  endPosCellNum;
-
-	InFile >> endPosCellNum; //read
-
-	endCellPos = CellPosition::GetCellPositionFromNum(endPosCellNum);
-	return this;
 }
 
 

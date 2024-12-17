@@ -49,7 +49,6 @@ void AddLadderAction::Execute()
 	//chekers
 	//1-check the hcell to make sure equal each other
 	//2-check start smaller than end
-	//3-check end not in last row
 	if (startPos.HCell() != endPos.HCell()) {
 		pManager->GetGrid()->PrintErrorMessage("End cell and start cell are not in the same column...");
 		return;
@@ -58,16 +57,17 @@ void AddLadderAction::Execute()
 		pManager->GetGrid()->PrintErrorMessage("End cell cannot be smaller than or equal to the start cell...");
 		return;
 	}
-	/*else if (endPos.VCell() == 0)
-	{
-
-	}*/
+	
 	// Create a Ladder object with the parameters read from the user
 	Ladder* pLadder = new Ladder(startPos, endPos);
 
 
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
-
+	if (pGrid->IsOverLapping(pLadder)) {
+		pGrid->PrintErrorMessage("Unvalid Ladder, Click To Continue ...");
+		delete pLadder;
+		return;
+	}
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
 

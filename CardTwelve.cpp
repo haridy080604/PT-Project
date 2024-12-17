@@ -69,30 +69,6 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
     }
 }
 
-// Save Card to File
-void CardTwelve::Save(ofstream& OutFile, GameObjectsType type) const {
-    // Save base card information
-    Card::Save(OutFile, type);
-
-    // Save card-specific information only once
-    if (!PrintOnce) {
-        OutFile << CardPrice << " " << Fees << endl;
-        PrintOnce = true;
-    }
-}
-
-// Read Card from File
-void CardTwelve::Read(ifstream& InFile) {
-    // Read base card information
-    Card::Read(InFile);
-
-    // Read card-specific information only once
-    if (!ReadOnce) {
-        InFile >> CardPrice >> Fees;
-        ReadOnce = true;
-    }
-}
-
 // Additional Static Methods
 void CardTwelve::EndPrint() {
     // Reset print flag

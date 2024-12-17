@@ -1,29 +1,84 @@
+#include "AddLadderAction.h"
 
-#pragma once
+#include "Input.h"
+#include "Output.h"
+#include "Ladder.h"
 
-#include "Action.h"
 
-class AddLadderAction : public Action
+AddLadderAction::AddLadderAction(ApplicationManager* pApp) : Action(pApp)
 {
-	// Always add action parameters as private data members
+	// Initializes the pManager pointer of Action with the passed pointer
+}
 
-	// [Action Parameters]
-	CellPosition startPos; // 1- The start position of the ladder
-	CellPosition endPos;   // 2- The end position of the ladder
+AddLadderAction::~AddLadderAction()
+{
+}
 
-	// Note: These parameters should be read in ReadActionParameters()
-
-public:
-
-	AddLadderAction(ApplicationManager* pApp); // A Constructor
-
-	virtual void ReadActionParameters(); // Reads AddLadderAction action parameters (startPos, endPos)
-
-	virtual void Execute(); // Creates a new Ladder Object 
-	// then Sets this Ladder object to the GameObject Pointer of its Cell
+void AddLadderAction::ReadActionParameters()
+{
+	// Get a Pointer to the Grid And Input / Output Interfaces
+	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 
 
-	virtual ~AddLadderAction(); // Virtual Destructor
 
-};
 
+	///TODO: Make the needed validations on the read parameters
+
+	// Read the startPos parameter
+	pOut->PrintMessage("Please Click on valid Start cell.....");
+	startPos = pIn->GetCellClicked();
+
+	// Read the endPos parameter
+	pOut->PrintMessage("Please Click on valid End cell......");
+	endPos = pIn->GetCellClicked();
+
+
+	// Clear messages
+	pOut->ClearStatusBar();
+}
+
+
+// Execute the action
+void AddLadderAction::Execute()
+{
+	// The first line of any Action Execution is to read its parameter first 
+	// and hence initializes its data members
+	ReadActionParameters();
+	//chekers
+	//1-check the hcell to make sure equal each other
+	//2-check start smaller than end
+	if (startPos.HCell() != endPos.HCell()) {
+		pManager->GetGrid()->PrintErrorMessage("End cell and start cell are not in the same column...");
+		return;
+	}
+	else if (startPos.VCell() <= endPos.VCell()) {
+		pManager->GetGrid()->PrintErrorMessage("End cell cannot be smaller than or equal to the start cell...");
+		return;
+	}
+	
+	// Create a Ladder object with the parameters read from the user
+	Ladder* pLadder = new Ladder(startPos, endPos);
+
+
+	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
+	if (pGrid->IsOverLapping(pLadder)) {
+		pGrid->PrintErrorMessage("Unvalid Ladder, Click To Continue ...");
+		delete pLadder;
+		return;
+	}
+	// Add the card object to the GameObject of its Cell:
+	bool added = pGrid->AddObjectToCell(pLadder);
+
+	// if the GameObject cannot be added
+	if (!added)
+	{
+		// Print an appropriate message
+		delete pLadder;
+		pGrid->PrintErrorMessage("InValid ...");
+
+	}
+	// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
+
+}

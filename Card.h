@@ -3,7 +3,6 @@
 
 #include <fstream>
 #include "GameObject.h"
-#include "GameObjectsType.h"
 #include "CellPosition.h"
 #include "Player.h"
 
@@ -24,9 +23,6 @@ public:
 	void SetCardNumber(int cnum);   // The setter of card number
 	int GetCardNumber() const;
 
-	void setCardPosition(const CellPosition& position); // the setter of Position USED in paste Card
-	// as it use Default Copy Constructor to all data in pointer of card in Clipboard
-	// so need to change the position after that
 
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card
 	// It has the same implementation for all Card Types (Non-Virtual)
@@ -38,14 +34,11 @@ public:
 	// It is a virtual function (implementation depends on Card Type)
 
 
-	virtual Card* getCopy(Card* ClipboardCard) const;
-	virtual void setCopy(Card* ClipboardCard);
+	//virtual void Save(ofstream& OutFile, GameObjectsType Obj) const;
 
-	virtual void Save(ofstream& OutFile, GameObjectsType Obj) const;
+	//virtual void Read(ifstream& InFile);
 
-	virtual void Read(ifstream& InFile);
-
-	virtual GameObject* Load(ifstream& InFile);
+	//virtual GameObject* Load(ifstream& InFile);
 	virtual ~Card(); // A Virtual Destructor
 };
 #endif

@@ -69,30 +69,6 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
     }
 }
 
-// Save Card to File
-void CardTen::Save(ofstream& OutFile, GameObjectsType type) const {
-    // Save base card information
-    Card::Save(OutFile, type);
-
-    // Save card-specific information only once
-    if (!PrintOnce) {
-        OutFile << CardPrice << " " << Fees << endl;
-        PrintOnce = true;
-    }
-}
-
-// Read Card from File
-void CardTen::Read(ifstream& InFile) {
-    // Read base card information
-    Card::Read(InFile);
-
-    // Read card-specific information only once
-    if (!ReadOnce) {
-        InFile >> CardPrice >> Fees;
-        ReadOnce = true;
-    }
-}
-
 // Additional Static Methods
 void CardTen::EndPrint() {
     // Reset print flag

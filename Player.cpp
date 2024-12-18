@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
+Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
@@ -12,7 +12,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerN
 
 // ====== Setters and Getters ======
 
-void Player::SetCell(Cell * cell)
+void Player::SetCell(Cell* cell)
 {
 	pCell = cell;
 }
@@ -37,12 +37,12 @@ int Player::GetTurnCount() const
 {
 	return turnCount;
 }
-int Player :: GetJustRolledDiceNum()
+int Player::GetJustRolledDiceNum()
 {
 	return justRolledDiceNum;
 }
 
-void Player :: SetTurnCount(int new_turn_count)
+void Player::SetTurnCount(int new_turn_count)
 {
 	turnCount = new_turn_count;
 
@@ -62,25 +62,26 @@ void Player::Draw(Output* pOut) const
 void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
-	
-	
+
+
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
 
 }
 
 // ====== Game Functions ======
 
-void Player::Move(Grid * pGrid, int diceNumber)
-{   
+void Player::Move(Grid* pGrid, int diceNumber)
+{
 	turnCount++;
 	if (turnCount > 3)
 	{
 		turnCount = 0;
 		wallet = 100;
-		
-	} else 
 
-	justRolledDiceNum = diceNumber;
+	}
+	else
+
+		justRolledDiceNum = diceNumber;
 
 	CellPosition& pos = pCell->GetCellPosition();
 	pos.AddCellNum(diceNumber);
@@ -88,7 +89,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	pGrid->UpdatePlayerCell(this, pos);
 
-	
+
 	if (pCell->GetGameObject() != NULL)
 	{
 
@@ -103,7 +104,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 
-	
+
 
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
@@ -113,10 +114,10 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-	
+
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	
+
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
@@ -131,9 +132,9 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 }
 
-void Player::AppendPlayerInfo(string & playersInfo) const
+void Player::AppendPlayerInfo(string& playersInfo) const
 {
-	playersInfo += "P" + to_string(playerNum) + "(" ;
+	playersInfo += "P" + to_string(playerNum) + "(";
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
 }

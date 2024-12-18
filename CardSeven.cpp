@@ -3,7 +3,7 @@
 CardSeven::CardSeven(const CellPosition& pos) : Card(pos)
 {
 
-	int card_number = 7;
+	cardNumber = 7;
 
 }
 
@@ -13,7 +13,7 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 
 	pPlayer->SetTurnCount(pPlayer->GetTurnCount() - 1);
 	pPlayer->Move(pGrid, pPlayer->GetJustRolledDiceNum());
-	
+
 
 
 

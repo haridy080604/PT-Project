@@ -3,7 +3,7 @@
 CardFive::CardFive(const CellPosition& pos) : Card(pos)
 {
 
-	int card_number = 5;
+	cardNumber = 5;
 
 }
 

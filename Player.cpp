@@ -37,11 +37,15 @@ int Player::GetTurnCount() const
 {
 	return turnCount;
 }
+int Player :: GetJustRolledDiceNum()
+{
+	return justRolledDiceNum;
+}
 
-void Player::setTurnCount(int n) {
-	if (n >= 0 && n < MaxPlayerCount) {
-		turnCount = n;
-	}
+void Player :: SetTurnCount(int new_turn_count)
+{
+	turnCount = new_turn_count;
+
 }
 
 // ====== Drawing Functions ======
@@ -67,7 +71,40 @@ void Player::ClearDrawing(Output* pOut) const
 // ====== Game Functions ======
 
 void Player::Move(Grid * pGrid, int diceNumber)
-{
+{   
+	turnCount++;
+	if (turnCount > 3)
+	{
+		turnCount = 0;
+		wallet = 100;
+		
+	} else 
+
+	justRolledDiceNum = diceNumber;
+
+	CellPosition& pos = pCell->GetCellPosition();
+	pos.AddCellNum(diceNumber);
+
+
+	pGrid->UpdatePlayerCell(this, pos);
+
+	
+	if (pCell->GetGameObject() != NULL)
+	{
+
+		pCell->GetGameObject()->Apply(pGrid, this);
+
+	}
+	if (pCell->GetCellPosition().GetCellNum() == 99)
+	{
+		pGrid->SetEndGame(true);
+	}
+
+
+
+
+	
+
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 

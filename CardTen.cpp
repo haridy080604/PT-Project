@@ -63,9 +63,18 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
         return;
     }
 
-    if (pPlayer != pOwner && pOwner!=nullptr) // If owned by another player
+    if (pPlayer != pOwner && pOwner != nullptr) // If owned by another player
     {
-        pPlayer->SetWallet(pPlayer->GetWallet() - Fees); // Deduct fees from player's wallet
+        if (pPlayer->GetWallet() >= Fees)
+        {
+            pPlayer->SetWallet(pPlayer->GetWallet() - Fees);
+            pOwner->SetWallet(pOwner->GetWallet() + Fees);
+        }// Deduct fees from player's wallet
+        else
+        {
+            pOwner->SetWallet(pOwner->GetWallet() + pPlayer->GetWallet());
+            pPlayer->SetWallet(0); // Deduct fees from player's wallet
+        }
     }
 }
 

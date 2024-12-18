@@ -1,55 +1,32 @@
-#include "CardNine.h"
-#include "Input.h"
-#include "Output.h"
-#include "Grid.h"
-#include "Player.h"
+#include "CardFour.h"
 
-// Constructor
-CardNine::CardNine(const CellPosition& pos) : Card(pos)
+CardFour::CardFour(const CellPosition& pos) : Card(pos)
 {
-    cardNumber = 9; // Set the card number
+
+	cardNumber = 4;
+
 }
 
-CardNine::CardNine()
+void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 {
+	Card::Apply(pGrid, pPlayer);
+
+
+
+	/*if (pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition()) != NULL)
+	{
+		pGrid->UpdatePlayerCell(pPlayer, pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition())->GetPosition());
+
+
+
+	}
+
+*/
+
 }
 
-// Reads the parameters of CardNine (the cell to move the player to)
-void CardNine::ReadCardParameters(Grid* pGrid)
+CardFour::~CardFour()
 {
-    // Get a Pointer to the Input/Output Interfaces from the Grid
-    Input* pIn = pGrid->GetInput();
-    Output* pOut = pGrid->GetOutput();
 
-    // Ask the user to enter the cell to move the player to
-    pOut->PrintMessage("Please Click on valid cell to be moved to .....");
 
-    // Validate and store the cell position
-    moveToCell = pIn->GetCellClicked();
-
-    // Clear the status bar
-    pOut->ClearStatusBar();
-}
-
-// Applies the effect of CardNine on the player who stops on it
-void CardNine::Apply(Grid* pGrid, Player* pPlayer)
-{
-    // Call the base class Apply to print the card's message
-    Card::Apply(pGrid, pPlayer);
-
-    // Inform the player about the move
-    pGrid->PrintErrorMessage("Card 9: You will be moved to cell " + std::to_string(moveToCell.GetCellNum()) + ". Click to continue...");
-
-    // Use the Player::Move function to move the player to the specific cell
-    int stepsToMove = moveToCell.GetCellNum() - pPlayer->GetCell()->GetCellPosition().GetCellNum();
-    if (stepsToMove > 0) // Move forward if necessary
-    {
-        pPlayer->Move(pGrid, stepsToMove);
-    }
-}
-
-// Destructor
-CardNine::~CardNine()
-{
-    // No dynamic memory to clean up
 }

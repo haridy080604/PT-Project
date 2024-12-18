@@ -3,7 +3,7 @@
 CardEight::CardEight(const CellPosition& pos) : Card(pos)
 {
 
-	int card_number = 8;
+	cardNumber = 8;
 
 }
 

@@ -9,7 +9,7 @@
 class CardOne :	public Card
 {
 	// CardOne Parameters:
-	int walletAmount; // the wallet value to decrease from the player
+	int walletAmount;// the wallet value to decrease from the player
 
 public:
 	CardOne(const CellPosition & pos); // A Constructor takes card position

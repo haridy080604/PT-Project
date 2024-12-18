@@ -12,6 +12,15 @@ CardOne::~CardOne(void)
 void CardOne::ReadCardParameters(Grid * pGrid)
 {
 	
+
+	Input* pIn;
+	Output* pOut;
+
+	pOut->PrintMessage("New CardOne: Enter its wallet amount\n");
+
+
+	walletAmount = pIn->GetInteger(pOut);
+	pOut->ClearStatusBar();
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
@@ -41,7 +50,8 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	
 
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
-
+	Card:: Apply(pGrid, pPlayer);
+	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne

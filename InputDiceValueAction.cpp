@@ -12,16 +12,27 @@ void InputDiceValueAction::ReadActionParameters() {
 	diceNumber = pIn->GetInteger(pOut);
 }
 void InputDiceValueAction::Execute() {
-	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-	if (diceNumber < 7 && diceNumber > 0) {
-		if (!pGrid->GetEndGame()) {
-			pGrid->GetCurrentPlayer()->Move(pGrid, diceNumber);
-			pGrid->AdvanceCurrentPlayer();
+	if (!(pGrid->GetCurrentPlayer()->GetFreeze()))
+	{
+		ReadActionParameters();
+		if (diceNumber < 7 && diceNumber > 0) {
+			if (!pGrid->GetEndGame()) {
+				pGrid->GetCurrentPlayer()->Move(pGrid, diceNumber);
+				pGrid->AdvanceCurrentPlayer();
+			}
+		}
+		else {
+			pGrid->PrintErrorMessage("Wrong Dice Number");
 		}
 	}
-	else {
-		pGrid->PrintErrorMessage("Wrong Dice Number");
+	else
+	{
+		pGrid->GetOutput()->PrintMessage("Played Disallowd");
+		pGrid->AdvanceCurrentPlayer();
+		pGrid->GetCurrentPlayer()->setFreeze(false);
+		int increment = (pGrid->GetCurrentPlayer()->GetTurnCount()) + 1;
+		pGrid->GetCurrentPlayer()->SetTurnCount(increment);
 	}
 }
 InputDiceValueAction::~InputDiceValueAction() {

@@ -10,14 +10,8 @@ CardEight::CardEight(const CellPosition& pos) : Card(pos)
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-
-	pPlayer->Move(pGrid, 0);
-
-
-
-
-
-
+	//pPlayer->Move(pGrid, 0);
+	pPlayer->setFreeze(true);
 }
 
 CardEight::~CardEight()

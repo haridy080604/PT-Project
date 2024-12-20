@@ -1,5 +1,5 @@
 #include "CardSeven.h"
-
+#include"RollDiceAction.h"
 CardSeven::CardSeven(const CellPosition& pos) : Card(pos)
 {
 
@@ -10,16 +10,8 @@ CardSeven::CardSeven(const CellPosition& pos) : Card(pos)
 void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-
-	pPlayer->SetTurnCount(pPlayer->GetTurnCount() - 1);
-	pPlayer->Move(pGrid, pPlayer->GetJustRolledDiceNum());
-
-
-
-
-
-
-
+	pGrid->GetOutput()->PrintMessage("Player " + to_string(pPlayer->getPlayerNumber()) + ": You will play again");
+	pGrid->RollCurrentPlayer();
 }
 
 CardSeven::~CardSeven()

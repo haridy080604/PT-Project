@@ -54,7 +54,7 @@ void Player::Draw(Output* pOut) const
 {
 	color playerColor = UI.PlayerColors[playerNum];
 
-
+	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, playerColor);
 	///TODO: use the appropriate output function to draw the player with "playerColor"
 
 }
@@ -63,7 +63,7 @@ void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
 
-
+	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, cellColor);
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
 
 }

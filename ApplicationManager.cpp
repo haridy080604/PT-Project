@@ -1,10 +1,14 @@
 #include "ApplicationManager.h"
-
+#include "AddSnakeAction.h"
 #include "Grid.h"
 #include "AddLadderAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
-
+#include "DeleteGameObject.h"
+#include "NewGameAction.h"
+#include "CopyCard.h"
+#include "PasteCardAction.h"
+#include "InputDiceValueAction.h"
 ///TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -80,8 +84,27 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_DESIGN_MODE:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
+	case ADD_SNAKE:
+		pAct = new AddSnakeAction(this);
+		break;
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObject(this);
+		break;
 
+	case NEW_GAME:
+		pAct = new NewGameAction(this);
+
+	case COPY_CARD:
+		pAct = new CopyCard(this);
+		break;
+
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
 		
+	case INPUT_DICE_VALUE:
+		pAct = new InputDiceValueAction(this);
+		break;
 
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode
 

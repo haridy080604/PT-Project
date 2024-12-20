@@ -118,8 +118,17 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
-CellPosition Grid::GetStartCell() const {
-	return CellPosition(8, 0);
+GameObject* Grid::getGameObject() {
+	GameObject* pG = GetClipboard();
+	return pG;
+}
+
+void Grid::getCopy(CellPosition c) {
+	if (!c.IsValidCell()) return;
+	Card* card = CellList[c.VCell()][c.HCell()]->HasCard();
+	if (card) {
+		SetClipboard(card);
+	}
 }
 // ========= Other Getters =========
 
@@ -186,6 +195,7 @@ bool Grid::IsOverLapping(GameObject* NewObj)
 	return check;
 
 }
+
 
 
 // ========= User Interface Functions =========

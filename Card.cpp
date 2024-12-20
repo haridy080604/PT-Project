@@ -51,10 +51,9 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 	//this will be overridden by all cards
 	pGrid->PrintErrorMessage("You have reached card " + to_string(cardNumber) + ", Click to continue ...");
 }
-
-
-
-
+void Card::setPosition(CellPosition c) {
+	position = c;
+}
 Card::~Card()
 {
 }

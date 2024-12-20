@@ -22,6 +22,8 @@ public:
 
 	void SetCardNumber(int cnum);   // The setter of card number
 	int GetCardNumber() const;
+	virtual void setPosition(CellPosition);
+
 
 
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card

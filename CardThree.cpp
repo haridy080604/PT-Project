@@ -1,5 +1,5 @@
 #include "CardThree.h"
-
+#include"Ladder.h"
 CardThree::CardThree(const CellPosition& pos) : Card(pos)
 {
 
@@ -12,13 +12,13 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	int dice_number = 0;
 	int current_pos = pPlayer->GetCell()->GetCellPosition().GetCellNum();
-	GameObject* pObject = (GameObject*)pGrid->GetNextLadder(pPlayer->GetCell()->GetCellPosition());
+	Ladder* pLadder = pGrid->GetNextLadder(pPlayer->GetCell()->GetCellPosition());
 
 
-	if (pObject != NULL)
+	if (pLadder != NULL)
 	{
-		pGrid->UpdatePlayerCell(pPlayer, pObject->GetPosition());
-
+		pPlayer->Move(pGrid, pLadder->GetPosition().GetCellNum() - current_pos);
+		//pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
 
 
 	}

@@ -11,8 +11,8 @@ private:
     static Player* pOwner;     // Owner of all Card Thirteen stations
     static int CardPrice;      // Price of the station
     static int Fees;           // Fees to be paid when other players land
-    // static bool PrintOnce;     // Ensure price is printed only once
-    // static bool ReadOnce;      // Ensure price is read only once
+    //static bool PrintOnce;     // Ensure price is printed only once
+    //static bool ReadOnce;      // Ensure price is read only once
 
 public:
     CardThirteen(const CellPosition& pos);  // Parameterized constructor
@@ -22,9 +22,9 @@ public:
     virtual void ReadCardParameters(Grid* pGrid);
     virtual void Apply(Grid* pGrid, Player* pPlayer);
 
-    // // Additional methods
-    // static void EndPrint();
-    // static void EndRead();
+    // Additional methods
+  /*  static void EndPrint();
+    static void EndRead();*/
 };
 
 #endif // CARD_Thirteen_H

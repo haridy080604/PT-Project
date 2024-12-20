@@ -2,11 +2,11 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
+Player::Player(Cell* pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum),MoveAgain(false)
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
-
+	this->Freeze = false;
 	// Make all the needed initialization or validations
 }
 
@@ -48,6 +48,31 @@ void Player::SetTurnCount(int new_turn_count)
 
 }
 
+void Player::setFreeze(bool a)
+{
+	Freeze = a;
+}
+
+void Player::setMoveAgain(bool a)
+{
+	MoveAgain = a;
+}
+
+bool Player::GetMoveAgain()
+{
+	return MoveAgain;
+}
+
+int Player::getPlayerNumber()
+{
+	return playerNum;
+}
+
+bool Player::GetFreeze()
+{
+	return Freeze;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -72,63 +97,65 @@ void Player::ClearDrawing(Output* pOut) const
 
 void Player::Move(Grid* pGrid, int diceNumber)
 {
-	turnCount++;
-	if (turnCount > 3)
-	{
-		turnCount = 0;
-		wallet = 100;
+	
+		turnCount++;
+		if (turnCount == 3)
+		{
+			turnCount = 0;
+			SetWallet(GetWallet() + 10);
+		}
+		else
 
-	}
-	else
+			justRolledDiceNum = diceNumber;
 
-		justRolledDiceNum = diceNumber;
-
-	CellPosition& pos = pCell->GetCellPosition();
-	pos.AddCellNum(diceNumber);
-
-
-	pGrid->UpdatePlayerCell(this, pos);
+		CellPosition& pos = pCell->GetCellPosition();
+		pos.AddCellNum(diceNumber);
 
 
-	if (pCell->GetGameObject() != NULL)
-	{
-
-		pCell->GetGameObject()->Apply(pGrid, this);
-
-	}
-	if (pCell->GetCellPosition().GetCellNum() == 99)
-	{
-		pGrid->SetEndGame(true);
-	}
+		pGrid->UpdatePlayerCell(this, pos);
 
 
+		if (pCell->GetGameObject() != NULL)
+		{
+
+			pCell->GetGameObject()->Apply(pGrid, this);
+
+		}
+		if (pCell->GetCellPosition().GetCellNum() == 99)
+		{
+			pGrid->SetEndGame(true);
+		}
 
 
 
 
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
-	// == Here are some guideline steps (numbered below) to implement this function ==
+		///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
-	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
+		// == Here are some guideline steps (numbered below) to implement this function ==
 
-	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
-	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 
-	// 3- Set the justRolledDiceNum with the passed diceNumber
+		// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
 
-	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
-	//    Using the appropriate function of CellPosition class to update "pos"
+		// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
+		//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
 
-	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
-	//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
+		// 3- Set the justRolledDiceNum with the passed diceNumber
 
-	// 6- Apply() the game object of the reached cell (if any)
+		// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
+		//    Using the appropriate function of CellPosition class to update "pos"
 
-	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+		// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
+		//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
+
+		// 6- Apply() the game object of the reached cell (if any)
+
+		// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+
+	
 
 }
 

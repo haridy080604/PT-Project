@@ -4,8 +4,8 @@
 Player* CardTen::pOwner = nullptr;
 int CardTen::CardPrice = -1;
 int CardTen::Fees = -1;
-bool CardTen::PrintOnce = false;
-bool CardTen::ReadOnce = false;
+//bool CardTen::PrintOnce = false;
+//bool CardTen::ReadOnce = false;
 
 // Constructors
 CardTen::CardTen(const CellPosition& pos) : Card(pos) { cardNumber = 10; }
@@ -78,13 +78,13 @@ void CardTen::Apply(Grid* pGrid, Player* pPlayer)
     }
 }
 
-// Additional Static Methods
-void CardTen::EndPrint() {
-    // Reset print flag
-    PrintOnce = false;
-}
-
-void CardTen::EndRead() {
-    // Reset read flag
-    ReadOnce = false;
-}
+//// Additional Static Methods
+//void CardTen::EndPrint() {
+//    // Reset print flag
+//    PrintOnce = false;
+//}
+//
+//void CardTen::EndRead() {
+//    // Reset read flag
+//    ReadOnce = false;
+//}

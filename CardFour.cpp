@@ -1,5 +1,5 @@
 #include "CardFour.h"
-
+#include"Snake.h"
 CardFour::CardFour(const CellPosition& pos) : Card(pos)
 {
 
@@ -10,18 +10,20 @@ CardFour::CardFour(const CellPosition& pos) : Card(pos)
 void CardFour::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
+	int current_pos = pPlayer->GetCell()->GetCellPosition().GetCellNum();
 
 
 
-	/*if (pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition()) != NULL)
+	if (pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition()) != NULL)
 	{
-		pGrid->UpdatePlayerCell(pPlayer, pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition())->GetPosition());
+		pPlayer->Move(pGrid, pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition())->GetPosition().GetCellNum() - current_pos);
+		//pGrid->UpdatePlayerCell(pPlayer, pGrid->GetNextSnake(pPlayer->GetCell()->GetCellPosition())->GetPosition());
 
 
 
 	}
 
-*/
+
 
 }
 

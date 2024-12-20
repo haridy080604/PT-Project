@@ -59,18 +59,22 @@ public:
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
 
+	void RollCurrentPlayer();
+
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 	GameObject* getGameObject();
 	void getCopy(CellPosition);
+	
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
 
 	Player* GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Ladder* GetNextLadder(const CellPosition& position);  // Gets a Pointer to the first Ladder after the passed "position"
+	Snake* GetNextSnake(const CellPosition& position);
 	bool IsOverLapping(GameObject* NewObj);
 	Ladder* HasLadder(const CellPosition& pos) const; //Gets if the Cell in CellPosition (pos) have and Ladder
-	Snake* HasSnake(const CellPosition& pos) const ; //Gets if the Cell in CellPosition (pos) have and Snake
+	Snake* HasSnake(const CellPosition& pos) const; //Gets if the Cell in CellPosition (pos) have and Snake
 
 	// ========= User Interface Functions =========
 

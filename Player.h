@@ -14,6 +14,8 @@ class Player
 	int wallet;		       // player's wallet (how many coins he has -- integer)
 	int justRolledDiceNum; // the current dice number which is just rolled by the player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
+	bool Freeze;
+	bool MoveAgain;
 	// and reset again when reached 3
 	// it is used to indicate when to move and when to add to your wallet
 
@@ -34,8 +36,11 @@ public:
 	int GetJustRolledDiceNum();
 
 	void SetTurnCount(int new_turn_count);
-
-
+	void setFreeze(bool a);
+	void setMoveAgain(bool a);
+	bool GetMoveAgain();
+	int getPlayerNumber();
+	bool GetFreeze();
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======
